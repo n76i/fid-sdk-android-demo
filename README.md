@@ -1,6 +1,6 @@
 # fid-sdk-android
 
-FID SDK integration documentation for Android (English version)
+FID SDK integration documentation for Android
 
 Phiên bản tiếng Việt [xem ở đây](./README-vi.md)
 
