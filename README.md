@@ -3,7 +3,7 @@
 Tài liệu hướng dẫn tích hợp FID SDK cho Android
 
 # Giới thiệu
-FID SDK là bộ thư viện để các app có thể tương tác với FID Platform. FID SDK bao gồm các chức năng chính như sau:
+FID SDK là thư viện để các app có thể tương tác với FID Platform. FID SDK bao gồm các chức năng chính như sau:
 - Đăng nhập bằng tài khoản FID
 - Hỗ trợ app lấy thông tin profile của user
 - Hiện tại FID SDK hỗ trợ tất cả các thiệt bị cài đặt hệ điều hành Android 4.1 (API 16) trở lên.
@@ -71,4 +71,106 @@ project.ext {
 }
 ```
 Hoàn tất, để kiểm tra mọi thứ đã hoạt động chúng ta đi đến hướng dẫn sử dụng
+
 ## Hướng dẫn sử dụng cơ bản
+Ở hướng dẫn này sẽ cần import những class sau:
+```java
+import ai.ftech.fid.AuthState;
+import ai.ftech.fid.factory.AuthStateManager;
+import ai.ftech.fid.factory.FID;
+import ai.ftech.fid.factory.FIDAuthStateChangeCallback;
+import ai.ftech.fid.factory.FIDCallbackManager;
+import ai.ftech.fid.factory.FIDCallbackType;
+import ai.ftech.fid.factory.FIDUserChangeCallback;
+```
+
+Một số class cần được khởi tạo instance:
+```java
+AuthStateManager authStateManager = AuthStateManager.getInstance(this);
+```
+
+### 1, Khởi tạo
+Bạn cần đảm bảo khởi tạo FID trước khi dùng những hàm khác của nó, có thể gọi ở `onCreate` của Activity
+```java
+FID.initialize(this);
+```
+Và để nhận lại kết quả sau khi đăng nhập từ WebView, cần thên đoạn sau vào phương thức `onActivityResult` của Activity:
+```java
+@Override
+protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    FIDCallbackManager.onActivityResult(requestCode, resultCode, data);
+}
+```
+### 2, Đăng ký các callback
+Bạn cần đảm bảo đăng ký các callback trước khi thực hiện gọi `login` và các hàm khác:
+```java
+FIDCallbackManager.registerCallback(FIDCallbackType.USER_CHANGE, new FIDUserChangeCallback() {
+    @Override
+    public void onUserChange(@Nullable JSONObject user, @Nullable Exception e) {
+        if (user != null) {
+            Log.e("FID", user.toString());
+            txtUserInfo.setText("User Info: " + user.toString());
+        } else {
+            txtUserInfo.setText("User Info: ");
+        }
+
+        if (e != null) {
+            Log.e("FID", e.toString());
+        }
+    }
+});
+
+FIDCallbackManager.registerCallback(FIDCallbackType.AUTH_STATE_CHANGE, new FIDAuthStateChangeCallback() {
+    @Override
+    public void onAuthStateChange(@Nullable AuthState authState, @Nullable Exception e) {
+        loadText();
+        if (authState != null && authState.isAuthorized()) {
+            txtAccessToken.setText("Access Token: " + authState.getAccessToken());
+            Long expiresAt = authState.getAccessTokenExpirationTime();
+            if (authState.getRefreshToken() != null) {
+                Log.e("FID", "Refresh Token returned");
+            }
+            if (authState.getAccessToken() != null) {
+                Log.e("FID", "Access Token returned");
+            }
+            String expiredTime = String.format("Access token expires at: %s", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss ZZ").print(expiresAt));
+            Log.e("FID", expiredTime);
+            FID.fetchUser(MainActivity.this);
+        } else {
+            Log.e("FID", "isAuthorized false or authState null");
+            txtUserInfo.setText("User Info: ");
+        }
+        if (e != null) {
+            Log.e("FID", e.toString());
+        }
+    }
+});
+```
+### 3, Đăng nhập FID
+Gọi hàm sau để đăng nhập vào FID, kết quả sẽ được trả về ở callback được đăng ký ở trên (Có thể gọi hàm này nhiều lần mà không cần kiểm tra đã đăng nhập hay chưa):
+```
+FID.login(MainActivity.this);
+```
+### 4, Lấy thông tin User
+Gọi hàm sau để lấy thông tin User, kết quả được trả về ở callback được đăng ký ở trên:
+```
+FID.fetchUser(MainActivity.this);
+```
+### 5, Làm mới Access Token
+Access Token của FID chỉ live trong khoảng thời gian rất ngắn, nên cần làm mới. Gọi hàm sau để làm mới Access Token:
+```
+FID.refreshToken(MainActivity.this)
+```
+### 6, Đăng xuất FID
+Gọi hàm sau để đăng xuất vào FID, kết quả sẽ được trả về ở callback được đăng ký ở trên (Có thể gọi hàm này nhiều lần mà không cần kiểm tra đã đăng nhập hay chưa):
+```
+FID.logout(MainActivity.this)
+```
+### 7, Kiểm tra đã đăng nhập
+Nếu muốn bạn cũng có thể kiểm tra tình trạng đăng nhập của User bằng cách sau:
+```java
+if (authStateManager.getCurrent().isAuthorized()) {
+   // do something
+}
+```
