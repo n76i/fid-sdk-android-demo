@@ -1,0 +1,3 @@
+include ':fid-sdk'
+include ':app'
+rootProject.name = "FID Demo"

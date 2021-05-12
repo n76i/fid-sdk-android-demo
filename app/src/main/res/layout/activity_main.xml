@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="32dp"
+        android:text="Login"
+        app:backgroundTint="#E49112"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnUserInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="User Info"
+        app:backgroundTint="#11C142"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintStart_toEndOf="@+id/btnLogin"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Logout"
+        app:backgroundTint="#5C2020"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.163"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+    <Button
+        android:id="@+id/btnRefreshToken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Refresh Token"
+        app:backgroundTint="#1AB3A5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnUserInfo"
+        app:rippleColor="#009688" />
+
+    <LinearLayout
+        android:id="@+id/layoutAccessToken"
+        android:layout_width="378dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogout">
+
+        <TextView
+            android:id="@+id/txtAccessToken"
+            android:layout_width="303dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="middle"
+            android:lines="3"
+            android:text="Access Token:" />
+
+        <Button
+            android:id="@+id/btnCopyAccessToken"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@android:string/copy" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutRefreshToken"
+        android:layout_width="378dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutAccessToken">
+
+        <TextView
+            android:id="@+id/txtRefreshToken"
+            android:layout_width="303dp"
+            android:lines="3"
+            android:ellipsize="end"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Refresh Token:" />
+
+        <Button
+            android:id="@+id/btnCopyRefreshToken"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@android:string/copy" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutIdToken"
+        android:layout_width="378dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutRefreshToken">
+
+        <TextView
+            android:id="@+id/txtIdToken"
+            android:layout_width="303dp"
+            android:lines="3"
+            android:ellipsize="end"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ID Token:" />
+
+        <Button
+            android:id="@+id/btnCopyIdToken"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@android:string/copy" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutUserInfo"
+        android:layout_width="378dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutIdToken">
+
+        <TextView
+            android:id="@+id/txtUserInfo"
+            android:layout_width="303dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:lines="3"
+            android:text="User Info:" />
+
+        <Button
+            android:id="@+id/btnUserInfoCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@android:string/copy" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

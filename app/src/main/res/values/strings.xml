@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FID Demo</string>
+    <string name="fid_app_id">6669642d646576</string>
+    <string name="fid_scheme">ai.ftech.id-dev</string>
+</resources>
