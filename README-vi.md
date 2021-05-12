@@ -1,6 +1,7 @@
 # fid-sdk-android
 
 Tài liệu hướng dẫn tích hợp FID SDK cho Android
+
 English version [see here](./README.md)
 
 # Giới thiệu
