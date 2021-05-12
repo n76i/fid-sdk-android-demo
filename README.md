@@ -1,32 +1,32 @@
 # fid-sdk-android
 
-Tài liệu hướng dẫn tích hợp FID SDK cho Android
+FID SDK integration documentation for Android
 
-# Giới thiệu
-FID SDK là thư viện để các app có thể tương tác với FID Platform. FID SDK bao gồm các chức năng chính như sau:
-- Đăng nhập bằng tài khoản FID
-- Hỗ trợ app lấy thông tin profile của user
-- Hiện tại FID SDK hỗ trợ tất cả các thiệt bị cài đặt hệ điều hành Android 4.1 (API 16) trở lên.
+# Introduce
+FID SDK is a library for apps to interact with FID Platform. FID SDK includes the following main functions:
+- Sign in with your FID account
+- Support to get profile information of the user
+- Currently, FID SDK supports all devices running Android 4.1 (API 16) and above.
 
-## Hỗ trợ
-Nếu trong quá trình tích hợp có thắc mắc gì bạn có thể:
+## Support
+If during the integration have any questions you may have:
 
-- Liên hệ trực tiếp qua email với team SDK để được trợ giúp
-- Tham khảo demo ở đây
+- Contact directly via email with the SDK team for assistance
+- Refer to the demo here
 
-## Bước 1
-Liên hệ trực tiếp với ftech.ai để được cung cấp Client ID và các thông tin liên quan, sau đó tải [FID SDK](https://github.com/n76i/fid-sdk-android-demo/raw/main/fid-sdk/fid-sdk-release.aar)
-## Bước 2: Thêm FID SDK vào dự án
-Trong Android Studio:
-- Chọn module app, nhấn chuột phải rồi chọn `New` -> `Module`
-- Kéo xuống dưới chọn `Import .JAR/.AAR`-> `Next`
-- Ở file name trỏ đường dẫn đến file SDK được tải ở bước 1
-- Ở sub project name có thể đổi tên thành `fid-sdk`
+## Step 1
+Contact [ftech.ai](https://ftech.ai/) directly for Client ID and related information, then download [FID SDK](https://github.com/n76i/fid-sdk-android-demo/raw/main/fid-sdk/fid-sdk-release.aar)
+## Step 2: Add the FID SDK to the project
+In Android Studio:
+- Select module app, right click then select `New` -> `Module`
+- Scroll down to select `Import .JAR/.AAR`-> `Next`
+- In the file name, point to the path to the SDK file loaded in step 1
+- In the sub project name you can change the name to `fid-sdk`
 
-Chú ý nếu bạn thấy đã import thành công nhưng không sử dụng được, có thể do SDK chưa được thêm vào `app`. Bạn có thể vào `File` -> `Project Structure` để thêm SDK vào module `app`
-## Bước 3: Cấu hình thêm
-### 1, Cấu hình AndroidManifest.xml
-Trong `AndroidManifest.xml` thêm đoạn code sau ở trong `application`:
+Note that if you find that the import was successful but not usable, it is possible that the SDK has not been added to `app`. You can go to `File` ->` Project Structure` to add the SDK to the `app` module
+## Step 3: Additional configuration
+### 1, Configuration AndroidManifest.xml
+In `AndroidManifest.xml` add the following code in` application`:
 ```java
 <activity android:name="ai.ftech.fid.RedirectUriReceiverActivity">
     <intent-filter>
@@ -40,40 +40,40 @@ Trong `AndroidManifest.xml` thêm đoạn code sau ở trong `application`:
 </activity>
 ```
 
-Trong `strings.xml` thêm 2 `string resources` này:
+In the `strings.xml` add these 2 `string resources`:
 ```xml
 <string name="fid_app_id">6669642d646576</string>
 <string name="fid_scheme">ai.ftech.id-dev</string>
 ```
 
-Chú ý `App ID` và `Scheme` sẽ được cấp khi bạn đăng ký với Ftech
-### 2, Cấu hình trong app/build.gradle
-Trong `build.gradle` -> `android` -> `defaultConfigs` thêm đoạn code sau:
+Note `App ID` and `Scheme` will be issued when you register with Ftech
+### 2, Configuration in app/build.gradle
+In `build.gradle` -> `android` -> `defaultConfigs` add the following code:
 ```
 manifestPlaceholders = [
     'appAuthRedirectScheme': 'ai.ftech.id-dev'
 ]
 ```
 
-Lưu ý `appAuthRedirectScheme` chính là `Scheme` được cấp ở trên
-### 3, Cài thêm một số thư viện bổ sung
-FID SDK được phát triển thêm từ `appauth-android`, với mục đích đơn giản hoá cách sử dụng nên cần bổ sung một số thư viện sau:
+Note `appAuthRedirectScheme` is the same `Scheme` provided above
+### 3, Install some additional libraries
+FID SDK is developed from `appauth-android`, with the aim of simplifying the use should be added some libraries follows:
 ```
 implementation "com.squareup.okio:okio:${project.okioVersion}"
 implementation "joda-time:joda-time:${project.jodaVersion}"
 ```
 
-Lưu ý ở đây chúng ta thấy `project.okioVersion` và `project.jodaVersion`, vì đảm bảo cả SDK và dự án của chúng ta đều dùng chung phiên bản nên sẽ cần quy định rõ, để cấu hình 2 giá trị này, chúng ta thêm đoạn code sau vào `build.gradle` của Project (không phải của module `app`):
+Note that here we see `project.okioVersion` and `project.jodaVersion`, because both our SDK and our project are using the same version, we need to specify, to configure these 2 values, We add the following code to the Project's `build.gradle` (not the `app` module):
 ```
 project.ext {
     okioVersion = '2.10.0'
     jodaVersion = '2.10.10'
 }
 ```
-Hoàn tất, để kiểm tra mọi thứ đã hoạt động chúng ta đi đến hướng dẫn sử dụng
+Finished, to check everything is working we go to the user guide
 
-## Hướng dẫn sử dụng cơ bản
-Ở hướng dẫn này sẽ cần import những class sau:
+## Basic instructions for use
+For this tutorial, we will need to import the following classes:
 ```java
 import ai.ftech.fid.AuthState;
 import ai.ftech.fid.factory.AuthStateManager;
@@ -84,17 +84,17 @@ import ai.ftech.fid.factory.FIDCallbackType;
 import ai.ftech.fid.factory.FIDUserChangeCallback;
 ```
 
-Một số class cần được khởi tạo instance:
+Some classes need to initialize the instance:
 ```java
 AuthStateManager authStateManager = AuthStateManager.getInstance(this);
 ```
 
-### 1, Khởi tạo
-Bạn cần đảm bảo khởi tạo FID trước khi dùng những hàm khác của nó, có thể gọi ở `onCreate` của Activity
+### 1, Initialization
+You need to make sure to initialize the FID before using its other functions, which can be called on the Activity's `onCreate`.
 ```java
 FID.initialize(this);
 ```
-Và để nhận lại kết quả sau khi đăng nhập từ WebView, cần thên đoạn sau vào phương thức `onActivityResult` của Activity:
+And to get the results back after logging in from the WebView, you need to add the following to the Activity's `onActivityResult` method:
 ```java
 @Override
 protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -102,8 +102,8 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
     FIDCallbackManager.onActivityResult(requestCode, resultCode, data);
 }
 ```
-### 2, Đăng ký các callback
-Bạn cần đảm bảo đăng ký các callback trước khi thực hiện gọi `login` và các hàm khác:
+### 2, Register callbacks
+Make sure to register the callbacks before making `login` calls and other functions:
 ```java
 FIDCallbackManager.registerCallback(FIDCallbackType.USER_CHANGE, new FIDUserChangeCallback() {
     @Override
@@ -147,27 +147,27 @@ FIDCallbackManager.registerCallback(FIDCallbackType.AUTH_STATE_CHANGE, new FIDAu
     }
 });
 ```
-### 3, Đăng nhập FID
-Gọi hàm sau để đăng nhập vào FID, kết quả sẽ được trả về ở callback được đăng ký ở trên (Có thể gọi hàm này nhiều lần mà không cần kiểm tra đã đăng nhập hay chưa):
+### 3, Login FID
+Call the following function to log into the FID, the results will be returned in the above registered callback (This function can be called multiple times without checking whether or not logged in):
 ```
 FID.login(MainActivity.this);
 ```
-### 4, Lấy thông tin User
-Gọi hàm sau để lấy thông tin User, kết quả được trả về ở callback được đăng ký ở trên:
+### 4, Get User information
+Call the following function to get the User information, the result is returned in the above registered callback:
 ```
 FID.fetchUser(MainActivity.this);
 ```
-### 5, Làm mới Access Token
-Access Token của FID chỉ live trong khoảng thời gian rất ngắn, nên cần làm mới. Gọi hàm sau để làm mới Access Token:
+### 5, Refresh the Access Token
+FID's Access Token is only live for a very short time, so it needs to be refreshed. Call the following function to refresh the Access Token:
 ```
 FID.refreshToken(MainActivity.this)
 ```
-### 6, Đăng xuất FID
-Gọi hàm sau để đăng xuất vào FID, kết quả sẽ được trả về ở callback được đăng ký ở trên (Có thể gọi hàm này nhiều lần mà không cần kiểm tra đã đăng nhập hay chưa):
+### 6, Logout of FID
+Call the following function to log out of the FID, the results will be returned in the above registered callback (This function can be called multiple times without checking whether to log in or not):
 ```
 FID.logout(MainActivity.this)
 ```
-### 7, Kiểm tra đã đăng nhập
+### 7, Check signed in
 Nếu muốn bạn cũng có thể kiểm tra tình trạng đăng nhập của User bằng cách sau:
 ```java
 if (authStateManager.getCurrent().isAuthorized()) {
