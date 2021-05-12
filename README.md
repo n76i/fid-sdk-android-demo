@@ -168,7 +168,7 @@ Call the following function to log out of the FID, the results will be returned 
 FID.logout(MainActivity.this)
 ```
 ### 7, Check signed in
-Nếu muốn bạn cũng có thể kiểm tra tình trạng đăng nhập của User bằng cách sau:
+If you want you can also check the login status of the User by the following:
 ```java
 if (authStateManager.getCurrent().isAuthorized()) {
    // do something
