@@ -15,7 +15,7 @@ Nếu trong quá trình tích hợp có thắc mắc gì bạn có thể:
 - Tham khảo demo ở đây
 
 ## Bước 1
-Liên hệ trực tiếp với ftech.ai để được cung cấp Client ID và các thông tin liên quan, sau đó tải [FID SDK](https://github.com/n76i/fid-sdk-android-demo/blob/main/fid-sdk/fid-sdk-release.aar)
+Liên hệ trực tiếp với ftech.ai để được cung cấp Client ID và các thông tin liên quan, sau đó tải [FID SDK](https://github.com/n76i/fid-sdk-android-demo/raw/main/fid-sdk/fid-sdk-release.aar)
 ## Bước 2: Thêm FID SDK vào dự án
 Trong Android Studio:
 - Chọn module app, nhấn chuột phải rồi chọn `New` -> `Module`
