@@ -94,6 +94,11 @@ You need to make sure to initialize the FID before using its other functions, wh
 ```java
 FID.initialize(this);
 ```
+To run the SDK on a sandbox environment, add a parameter to the constructor as shown below
+```java
+FID.initialize(this, "fid-dev");
+```
+
 And to get the results back after logging in from the WebView, you need to add the following to the Activity's `onActivityResult` method:
 ```java
 @Override
@@ -168,7 +173,7 @@ Call the following function to log out of the FID, the results will be returned 
 FID.logout(MainActivity.this)
 ```
 ### 7, Check signed in
-Nếu muốn bạn cũng có thể kiểm tra tình trạng đăng nhập của User bằng cách sau:
+If you want you can also check the login status of the User by the following:
 ```java
 if (authStateManager.getCurrent().isAuthorized()) {
    // do something

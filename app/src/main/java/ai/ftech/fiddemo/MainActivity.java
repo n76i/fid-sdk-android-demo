@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FID.initialize(this);
+        FID.initialize(this, "fid-dev");
 
         clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         authStateManager = AuthStateManager.getInstance(this);

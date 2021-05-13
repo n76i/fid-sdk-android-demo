@@ -94,6 +94,11 @@ Bạn cần đảm bảo khởi tạo FID trước khi dùng những hàm khác 
 ```java
 FID.initialize(this);
 ```
+Để chạy SDK trên môi trường sandbox, hãy thêm một tham số vào hàm khởi tạo như dưới đây
+```java
+FID.initialize(this, "fid-dev");
+```
+
 Và để nhận lại kết quả sau khi đăng nhập từ WebView, cần thên đoạn sau vào phương thức `onActivityResult` của Activity:
 ```java
 @Override
