@@ -63,6 +63,7 @@ FID SDK is developed from `appauth-android`, with the aim of simplifying the use
 ```
 implementation "com.squareup.okio:okio:${project.okioVersion}"
 implementation "joda-time:joda-time:${project.jodaVersion}"
+implementation "androidx.browser:browser:1.3.0"
 ```
 
 Note that here we see `project.okioVersion` and `project.jodaVersion`, because both our SDK and our project are using the same version, we need to specify, to configure these 2 values, We add the following code to the Project's `build.gradle` (not the `app` module):
