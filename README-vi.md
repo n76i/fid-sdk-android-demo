@@ -96,7 +96,7 @@ Bạn cần đảm bảo khởi tạo FID trước khi dùng những hàm khác 
 ```java
 FID.initialize(this);
 ```
-Để chạy SDK trên môi trường sandbox, hãy thêm một tham số vào hàm khởi tạo như dưới đây
+Để chạy SDK trên môi trường sandbox, hãy thêm một tham số vào hàm khởi tạo như dưới đây:
 ```java
 FID.initialize(this, "fid-dev");
 ```
