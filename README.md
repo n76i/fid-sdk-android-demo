@@ -2,6 +2,8 @@
 
 FID SDK integration documentation for Android
 
+Phiên bản tiếng Việt [xem ở đây](./README-vi.md)
+
 # Introduce
 FID SDK is a library for apps to interact with FID Platform. FID SDK includes the following main functions:
 - Sign in with your FID account
