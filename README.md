@@ -1,4 +1,4 @@
-# fid-sdk-android
+# fid-sdk-android v1.0
 
 FID SDK integration documentation for Android
 
@@ -142,7 +142,8 @@ FIDCallbackManager.registerCallback(FIDCallbackType.AUTH_STATE_CHANGE, new FIDAu
             if (authState.getAccessToken() != null) {
                 Log.e("FID", "Access Token returned");
             }
-            String expiredTime = String.format("Access token expires at: %s", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss ZZ").print(expiresAt));
+            String expiredTime = String.format("Access token expires at: %s", 
+                DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss ZZ").print(expiresAt));
             Log.e("FID", expiredTime);
             FID.fetchUser(MainActivity.this);
         } else {

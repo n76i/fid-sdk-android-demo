@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import ai.ftech.fid.AuthState;
 import ai.ftech.fid.factory.AuthStateManager;
+import ai.ftech.fid.factory.Configuration;
 import ai.ftech.fid.factory.FID;
 import ai.ftech.fid.factory.FIDAuthStateChangeCallback;
 import ai.ftech.fid.factory.FIDCallbackManager;
@@ -121,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadText() {
+        getSupportActionBar().setTitle("Client " + Configuration.getInstance(this).getClientId());
         AuthState authState = authStateManager.getCurrent();
         txtAccessToken.setText("Access Token: " + authState.getAccessToken());
         txtRefreshToken.setText("Refresh Token: " + authState.getRefreshToken());
