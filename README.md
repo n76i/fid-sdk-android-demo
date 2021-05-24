@@ -184,12 +184,12 @@ if (authStateManager.getCurrent().isAuthorized()) {
 }
 ```
 
-## Các tài liệu liên quan
-FID được xây dựng theo chuẩn openid, có thể xem tài liệu đầy đủ [tại đây](https://openid.net/specs/openid-connect-core-1_0.html#Authenticates)
+## Related documents
+FID is built according to openid standard, full documentation can be viewed [here](https://openid.net/specs/openid-connect-core-1_0.html#Authenticates)
 
-Một số thông tin cơ bản có thể tham khảo nhanh để phát triển ứng dụng của bạn
+Some basic information that can be a quick reference to develop your app
 
-### 1, Các thông tin của user
+### 1, User information
 This specification defines a set of standard Claims. They can be requested to be returned either in the UserInfo Response.
 
 | Member | Type  | Description  |
