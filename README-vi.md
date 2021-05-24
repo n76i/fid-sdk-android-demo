@@ -189,17 +189,17 @@ FID được xây dựng theo chuẩn openid, có thể xem tài liệu đầy �
 
 Một số thông tin cơ bản có thể tham khảo nhanh để phát triển ứng dụng của bạn
 
-### 1. Các thông tin của user
-This specification defines a set of standard Claims. They can be requested to be returned either in the UserInfo Response.
+### 1. Các thông tin của người dùng
+Một số chuẩn đã được định nghĩa và bổ sung thêm, các thông tin này được trả về khi thực hiện lấy thông tin người dùng.
 
-| Member | Type  | Description  |
+| Tên | Loại  | Giới thiệu  |
 | ------- | --- | --- |
-| sub | string | Subject - Global user ID, ie: "sub": "1000" |
-| name | string | Display name, ie: "preferred_username": "Bạch Ngọc Sơn" |
-| preferred_username | string | Field username, ie: "name": "sonbn" |
-| picture | string | Primary profile picture url, ie: "picture": "https://a.com/b.jpg" |
-| email | string | Primary email, used by local login, ie: "sonbn@ftech.ai" |
-| email_verified | bool | Primary email verification status |
-| phone_number | string | Primary phone number, used by local login. "+84"-formated, ie: "phone_number": "+8453458875". This field is also used for SMS OTP |
-| phone_number_verified | bool | Primary phone number verification status |
-| extra_info | object | Example: "extra_info": {"emails":["a@a.com","b@b.com"],"names":["A","B","C"],"pictures":[]} |
+| sub | string | ID chung của người dùng khi sử dụng các dịch vụ sử dụng FID, vd: "sub": "1000" |
+| name | string | Tên hiển thị, vd: "preferred_username": "Bạch Ngọc Sơn" |
+| preferred_username | string | Tên đăng nhập, vd: "name": "sonbn" |
+| picture | string | Hình ảnh đại diện (gốc) của người dùng, vd: "picture": "https://a.com/b.jpg" |
+| email | string | Email chính, được sử dụng bởi đăng nhập cục bộ, vd: "sonbn@ftech.ai" |
+| email_verified | bool | Trạng thái xác minh email chính |
+| phone_number | string | Số điện thoại chính, được sử dụng bởi đăng nhập cục bộ. Định dạng "+84", vd: "phone_number": "+8453458875". Trường này cũng được sử dụng cho SMS OTP |
+| phone_number_verified | bool | Trạng thái xác minh số điện thoại chính |
+| extra_info | object | Một số dữ liệu tuỳ chỉnh, vd: "extra_info": {"emails":["a@a.com","b@b.com"],"names":["A","B","C"],"pictures":[]} |
