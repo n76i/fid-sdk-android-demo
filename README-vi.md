@@ -191,7 +191,7 @@ Một số thông tin cơ bản có thể tham khảo nhanh để phát triển 
 
 ### 0. Scopes
 - openid: sub
-- profile: name, preferred_username, extra_info (emails & phone numbers from 3rd party identity providers)
+- profile: name, preferred_username, extra_info (Identity data: emails, phone numbers, pictures, ... from 3rd party identity providers), picture
 - email: email, email_verified
 - phone: phone_number, phone_number_verified
 - offline_access: refresh token
@@ -201,12 +201,12 @@ This specification defines a set of standard Claims. They can be requested to be
 
 | Member | Type  | Description  |
 | ------- | --- | --- |
-| sub | string | Subject - Identifier for the End-User at the Issuer. Global user ID, ie: "1000" |
-| name | string | username, ie: "sonbn" |
-| preferred_username | string | Display name, ie: "Bạch Ngọc Sơn" |
-| picture | string | URL of the End-User's profile picture. This URL MUST refer to an image file (for example, a PNG, JPEG, or GIF image file), rather than to a Web page containing an image. Note that this URL SHOULD specifically reference a profile photo of the End-User suitable for displaying when describing the End-User, rather than an arbitrary photo taken by the End-User. |
+| sub | string | Subject - Global user ID, ie: "sub": "1000" |
+| name | string | Field username, ie: "name": "sonbn" |
+| preferred_username | string | Display name, ie: "preferred_username": "Bạch Ngọc Sơn" |
+| picture | string | Primary profile picture url, ie: "picture": "https:///a.com/b.jpg" |
 | email | string | Primary email, used by local login, ie: "sonbn@ftech.ai" |
 | email_verified | bool | Primary email verification status |
 | phone_number | string | Primary phone number, used by local login. "+84"-formated, ie: "phone_number": "+8453458875". This field is also used for SMS OTP |
 | phone_number_verified | bool | Primary phone number verification status |
-| extra_info | object | Example: "extra_info": { "emails": ["a@a.com", "b@b.com"], "names": ["A", "B"] } |
+| extra_info | object | Example: "extra_info": { "emails": ["a@a.com", "b@b.com"], "names": ["A", "B", "C"], "pictures": [] } |
