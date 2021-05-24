@@ -1,4 +1,4 @@
-# fid-sdk-android v1.0
+# fid-sdk-android v1.1
 
 FID SDK integration documentation for Android
 
