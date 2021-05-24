@@ -183,3 +183,11 @@ if (authStateManager.getCurrent().isAuthorized()) {
    // do something
 }
 ```
+
+## Các tài liệu liên quan
+FID được xây dựng theo chuẩn openid, có thể xem tài liệu đầy đủ [tại đây](https://openid.net/specs/openid-connect-core-1_0.html#Authenticates)
+
+Một số thông tin cơ bản có thể tham khảo nhanh để phát triển ứng dụng của bạn
+
+### 1, Các Scope khả dụng
+Hiện FID đã hỗ trợ các `scope` bao gồm 
