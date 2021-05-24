@@ -1,4 +1,4 @@
-# fid-sdk-android v1.0
+# fid-sdk-android v1.1
 
 Tài liệu hướng dẫn tích hợp FID SDK cho Android
 
@@ -64,6 +64,7 @@ FID SDK được phát triển thêm từ `appauth-android`, với mục đích 
 implementation "com.squareup.okio:okio:${project.okioVersion}"
 implementation "joda-time:joda-time:${project.jodaVersion}"
 implementation "androidx.browser:browser:1.3.0"
+implementation 'org.greenrobot:eventbus:3.2.0'
 ```
 
 Lưu ý ở đây chúng ta thấy `project.okioVersion` và `project.jodaVersion`, vì đảm bảo cả SDK và dự án của chúng ta đều dùng chung phiên bản nên sẽ cần quy định rõ, để cấu hình 2 giá trị này, chúng ta thêm đoạn code sau vào `build.gradle` của Project (không phải của module `app`):
