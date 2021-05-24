@@ -189,24 +189,17 @@ FID được xây dựng theo chuẩn openid, có thể xem tài liệu đầy �
 
 Một số thông tin cơ bản có thể tham khảo nhanh để phát triển ứng dụng của bạn
 
-### 0. Scopes
-- openid: sub
-- profile: name, preferred_username, extra_info (Identity data: emails, phone numbers, pictures, ... from 3rd party identity providers), picture
-- email: email, email_verified
-- phone: phone_number, phone_number_verified
-- offline_access: refresh token
-
 ### 1. Các thông tin của user
 This specification defines a set of standard Claims. They can be requested to be returned either in the UserInfo Response.
 
 | Member | Type  | Description  |
 | ------- | --- | --- |
 | sub | string | Subject - Global user ID, ie: "sub": "1000" |
-| name | string | Field username, ie: "name": "sonbn" |
-| preferred_username | string | Display name, ie: "preferred_username": "Bạch Ngọc Sơn" |
-| picture | string | Primary profile picture url, ie: "picture": "https:///a.com/b.jpg" |
+| name | string | Display name, ie: "preferred_username": "Bạch Ngọc Sơn" |
+| preferred_username | string | Field username, ie: "name": "sonbn" |
+| picture | string | Primary profile picture url, ie: "picture": "https://a.com/b.jpg" |
 | email | string | Primary email, used by local login, ie: "sonbn@ftech.ai" |
 | email_verified | bool | Primary email verification status |
 | phone_number | string | Primary phone number, used by local login. "+84"-formated, ie: "phone_number": "+8453458875". This field is also used for SMS OTP |
 | phone_number_verified | bool | Primary phone number verification status |
-| extra_info | object | Example: "extra_info": { "emails": ["a@a.com", "b@b.com"], "names": ["A", "B", "C"], "pictures": [] } |
+| extra_info | object | Example: "extra_info": {"emails":["a@a.com","b@b.com"],"names":["A","B","C"],"pictures":[]} |
