@@ -53,6 +53,12 @@ public class MainActivity extends AppCompatActivity {
                 if (user != null) {
                     Log.e("FID", user.toString());
                     txtUserInfo.setText("User Info: " + user.toString());
+
+                    findViewById(R.id.btnUserInfoCopy).setOnClickListener(view -> {
+                        ClipData clip = ClipData.newPlainText("User Info", user.toString());
+                        clipboard.setPrimaryClip(clip);
+                        Toast.makeText(MainActivity.this, "copied", Toast.LENGTH_SHORT).show();
+                    });
                 } else {
                     txtUserInfo.setText("User Info: ");
                 }
@@ -107,11 +113,6 @@ public class MainActivity extends AppCompatActivity {
         });
         findViewById(R.id.btnCopyIdToken).setOnClickListener(view -> {
             ClipData clip = ClipData.newPlainText("Id Token", authStateManager.getCurrent().getIdToken());
-            clipboard.setPrimaryClip(clip);
-            Toast.makeText(MainActivity.this, "copied", Toast.LENGTH_SHORT).show();
-        });
-        findViewById(R.id.btnUserInfoCopy).setOnClickListener(view -> {
-            ClipData clip = ClipData.newPlainText("User Info", authStateManager.getCurrent().getIdToken());
             clipboard.setPrimaryClip(clip);
             Toast.makeText(MainActivity.this, "copied", Toast.LENGTH_SHORT).show();
         });
