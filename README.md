@@ -183,3 +183,22 @@ if (authStateManager.getCurrent().isAuthorized()) {
    // do something
 }
 ```
+
+## Các tài liệu liên quan
+FID được xây dựng theo chuẩn openid, có thể xem tài liệu đầy đủ [tại đây](https://openid.net/specs/openid-connect-core-1_0.html#Authenticates)
+
+Một số thông tin cơ bản có thể tham khảo nhanh để phát triển ứng dụng của bạn
+
+### 1, Các thông tin của user
+This specification defines a set of standard Claims. They can be requested to be returned either in the UserInfo Response.
+
+| Member | Type  | Description  |
+| ------- | --- | --- |
+| sub | string | Subject - Identifier for the End-User at the Issuer. |
+| given_name | string | Given name(s) or first name(s) of the End-User. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters. |
+| family_name | string | Surname(s) or last name(s) of the End-User. Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters. |
+| location | string | End-User's locale, represented as a BCP47 [RFC5646] language tag. This is typically an ISO 639-1 Alpha-2 [ISO639‑1] language code in lowercase and an ISO 3166-1 Alpha-2 [ISO3166‑1] country code in uppercase, separated by a dash. For example, en-US or fr-CA. As a compatibility note, some implementations have used an underscore as the separator rather than a dash, for example, en_US; Relying Parties MAY choose to accept this locale syntax as well. |
+| website | string | URL of the End-User's Web page or blog. This Web page SHOULD contain information published by the End-User or an organization that the End-User is affiliated with. |
+| name | string | End-User's full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the End-User's locale and preferences. |
+| preferred_username | string | Shorthand name by which the End-User wishes to be referred to at the RP, such as janedoe or j.doe. This value MAY be any valid JSON string including special characters such as @, /, or whitespace. The RP MUST NOT rely upon this value being unique |
+| picture | string | URL of the End-User's profile picture. This URL MUST refer to an image file (for example, a PNG, JPEG, or GIF image file), rather than to a Web page containing an image. Note that this URL SHOULD specifically reference a profile photo of the End-User suitable for displaying when describing the End-User, rather than an arbitrary photo taken by the End-User. |
